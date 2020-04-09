@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     /**
-    * @Route("/lucky/number")
+    * @Route("/")
     */
     public function number()
     {

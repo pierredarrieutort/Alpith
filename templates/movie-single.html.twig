@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="container">
+    <div class="row mb-1 mt-5">
+        <div class="col-md-4">
+            <img class="card-image" src="{{ movie.thumbnail }}" alt="">
+        </div>
+        <div class="col-md-8">
+            <h2 class="mb-4">{{ movie.title }}</h2>
+            <p>{{ movie.description }}</p>
+            <div>rating : {{ movie.rating }}</div>
+            <div>director : {{ movie.director }}</div>
+            <div>actors : {{ movie.actors }}</div>
+            <div>imdbID : {{ movie.imdbID }}</div>
+            <div>released : {{ movie.released|date("m/d/Y") }}</div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
