@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="container">
+    <h1 class="mt-5">Movies page</h1>
+    <div class="row mb-5 mt-5">
+        {% for movie in movies|reverse %}
+        <movie class="col-md-4 mt-4">
+            <img class="card-image" src="{{ movie.thumbnail }}" alt="">
+            <div class="card">
+                <h3 class="card-title mb-2">{{ movie.title }}</h3>
+                <p class="card-text">{{ movie.description }}</p>
+                <div class="card-text">{{ movie.rating }}</div>
+                <a href="movies/movie-{{ movie.id }}" class="card-link">read more</a>
+            </div>
+        </movie>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
