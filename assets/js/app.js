@@ -76,7 +76,7 @@ function stateListener( { data, target } ) {
     if ( /1/.test( data ) )
         playing_behavior( target )
 
-    if ( /-1|0|2|5/.test( data ) )
+    if ( /0|2|5/.test( data ) )
         onPlayerReady( target )
 }
 
