@@ -1,6 +1,8 @@
 @import "~bootstrap/scss/bootstrap";
 
 #trends-carousel {
+    max-width: 1200px;
+    margin: auto;
 
     img {
         object-fit: cover;
