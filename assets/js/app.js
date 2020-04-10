@@ -39,41 +39,33 @@ function iframeInit( player, i ) {
     new YT.Player( FRAME_WRAPPER.id, {
         height: '400',
         width: '100%',
-        origin: window.location.href,
         videoId: player.dataset.video,
         controls: 0,
-        disablekb: 1,
-        autoplay: 1,
-        start: 3,
-        end: 30,
-        iv_load_policy: 3,
-        loop: 1,
         modestbranding: 1,
+        fs: 0,
+        iv_load_policy: 3,
         rel: 0,
-        showinfo: 0,
-        enablejsapi: 1,
+        playerVars: {
+            loop: 1,
+            control: 0,
+            // start: 3,
+            // end: 10,
+            mute: 1
+        },
         events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onReady': onPlayerReady
         }
     } )
 }
 
-function onPlayerReady( event ) {
-    event.target.mute();
-    event.target.playVideo();
+function onPlayerReady( { target } ) {
+    target.playVideo()
+    trailer_limiter( target )
 }
 
-var done = false;
-function onPlayerStateChange( event ) {
-    if ( event.data == YT.PlayerState.PLAYING && !done ) {
-        // setTimeout( () => stopVideo( event.target ), 3000 )
-        done = true
-    }
-}
-
-
-
-function stopVideo( event ) {
-    event.stopVideo()
+function trailer_limiter( target ) {
+    console.log( target.getCurrentTime() )
+    if ( target.getCurrentTime() < 3 || target.getCurrentTime() >= 30 )
+        target.seekTo( 20 )
+    setTimeout( () => trailer_limiter(target), 1000 )
 }
