@@ -11,13 +11,9 @@ function scripts() {
 
 
 function homePlayer() {
-
     const
         TAG = document.createElement( 'script' ),
         PLAYERS = Array.from( document.querySelectorAll( '#trends-carousel [data-video]' ) )
-
-
-
 
     TAG.src = "https://www.youtube.com/iframe_api";
     let firstScriptTag = document.getElementsByTagName( 'script' )[0];
@@ -25,7 +21,6 @@ function homePlayer() {
 
 
     window.onYouTubePlayerAPIReady = () => PLAYERS.forEach( ( player, i ) => iframeInit( player, i ) )
-
 }
 
 
@@ -51,7 +46,8 @@ function iframeInit( player, i ) {
             mute: 1
         },
         events: {
-            'onReady': onPlayerReady
+            'onReady': onPlayerReady,
+            'onStateChange': stateListener
         }
     } )
 }
@@ -70,4 +66,25 @@ function trailer_limiter( target ) {
         target.seekTo( START_TIME )
 
     setTimeout( () => trailer_limiter( target ), 1000 )
+}
+
+
+function stateListener( { data, target } ) {
+    if ( /3/.test( data ) )
+        buffering_behavior( target )
+
+    if ( /1/.test( data ) )
+        playing_behavior( target )
+
+    if ( /-1|0|2|5/.test( data ) )
+        onPlayerReady( target )
+}
+
+
+function buffering_behavior( target ) {
+
+}
+
+function playing_behavior( target ) {
+
 }
