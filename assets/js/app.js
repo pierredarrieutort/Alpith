@@ -48,8 +48,6 @@ function iframeInit( player, i ) {
         playerVars: {
             loop: 1,
             control: 0,
-            // start: 3,
-            // end: 10,
             mute: 1
         },
         events: {
@@ -64,8 +62,12 @@ function onPlayerReady( { target } ) {
 }
 
 function trailer_limiter( target ) {
-    console.log( target.getCurrentTime() )
-    if ( target.getCurrentTime() < 3 || target.getCurrentTime() >= 30 )
-        target.seekTo( 20 )
-    setTimeout( () => trailer_limiter(target), 1000 )
+    const
+        START_TIME = 3,
+        TRAILER_DURATION = 30 - START_TIME
+
+    if ( target.getCurrentTime() < START_TIME || target.getCurrentTime() >= TRAILER_DURATION )
+        target.seekTo( START_TIME )
+
+    setTimeout( () => trailer_limiter( target ), 1000 )
 }
