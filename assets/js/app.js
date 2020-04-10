@@ -37,7 +37,7 @@ function iframeInit( player, i ) {
 
 
     new YT.Player( FRAME_WRAPPER.id, {
-        height: '400',
+        height: '100vw',
         width: '100%',
         videoId: player.dataset.video,
         controls: 0,
