@@ -6,12 +6,18 @@
 
         .carousel-inner,
         .carousel-item,
-        img {
+        img,
+        iframe {
             height: inherit;
         }
 
         img {
             object-fit: cover;
+        }
+
+        iframe {
+            position: absolute;
+            top: 0;
         }
 
         .carousel-item::after {
