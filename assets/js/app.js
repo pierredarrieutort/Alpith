@@ -24,14 +24,14 @@ function iframe_init( player, i ) {
     player.parentNode.appendChild( FRAME_WRAPPER )
 
     new YT.Player( FRAME_WRAPPER.id, {
-        height: '100vw',
+        height: '100%',
         width: '100%',
         videoId: player.dataset.video,
-        modestbranding: 1,
-        fs: 0,
-        iv_load_policy: 3,
-        rel: 0,
         playerVars: {
+            modestbranding: 1,
+            fs: 0,
+            iv_load_policy: 3,
+            rel: 0,
             loop: 1,
             controls: 0,
             mute: 1
@@ -96,7 +96,7 @@ function trailer_limiter( target, recall = true, force_seek ) {
         START_TIME = 3,
         TRAILER_DURATION = 30 - START_TIME
 
-    if ( target.getCurrentTime() < START_TIME || target.getCurrentTime() >= TRAILER_DURATION || force_seek) {
+    if ( target.getCurrentTime() < START_TIME || target.getCurrentTime() >= TRAILER_DURATION || force_seek ) {
         target.seekTo( START_TIME )
     }
 
