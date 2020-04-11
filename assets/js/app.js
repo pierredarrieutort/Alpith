@@ -47,20 +47,14 @@ function iframe_init( player, i ) {
 }
 
 function state_listener( { data, target } ) {
-    if ( /3/.test( data ) ) {
-        console.log( 'a' )
+    if ( /3/.test( data ) )
         trailer_limiter( target, false )
-    }
 
-    if ( /1/.test( data ) ) {
-        console.log( 'b' )
+    if ( /1/.test( data ) )
         trailer_limiter( target )
-    }
 
-    if ( /0|5/.test( data ) ) {
-        console.log( 'c' )
+    if ( /0|5/.test( data ) )
         poster_to_trailer( target )
-    }
 }
 
 let targets_warehouse = []
@@ -76,24 +70,25 @@ function player_init_behavior( { target } ) {
 
 let hovered_target = false
 function poster_to_trailer( target ) {
-    console.log( 'poster_to_trailer', target.f.id.substr( target.f.id.length - 1 ) )
     hovered_target = true
     document.getElementById( 'trends-carousel' ).onmouseleave = () => trailer_to_poster( target )
     if ( hovered_target ) {
         target.playVideo()
+        target.f.style.transition = 'opacity 1.3s'
         target.f.style.opacity = 1
     }
 }
 
 function trailer_to_poster( target, end_of_stream = false ) {
-    console.log( 'trailer_to_poster', target.f.id.substr( target.f.id.length - 1 ) )
     hovered_target = false
+    target.f.style.transition = 'opacity .5s'
     target.f.style.opacity = 0
     if ( !end_of_stream )
-        setTimeout( () => trailer_limiter( target, false, true ), 1000 )
+        setTimeout( () => trailer_limiter( target, false, true ), 500 )
 }
 
 function trailer_limiter( target, recall = true, force_seek ) {
+    target.playVideo()
     console.log( 'trailer_limiter', target.f.id.substr( target.f.id.length - 1 ), recall, hovered_target )
     const
         START_TIME = 3,
