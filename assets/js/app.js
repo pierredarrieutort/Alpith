@@ -27,14 +27,13 @@ function iframe_init( player, i ) {
         height: '100vw',
         width: '100%',
         videoId: player.dataset.video,
-        controls: 0,
         modestbranding: 1,
         fs: 0,
         iv_load_policy: 3,
         rel: 0,
         playerVars: {
             loop: 1,
-            control: 0,
+            controls: 0,
             mute: 1
         },
         events: {
