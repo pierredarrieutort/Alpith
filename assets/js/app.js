@@ -89,7 +89,6 @@ function trailer_to_poster( target, end_of_stream = false ) {
 
 function trailer_limiter( target, recall = true, force_seek ) {
     target.playVideo()
-    console.log( 'trailer_limiter', target.f.id.substr( target.f.id.length - 1 ), recall, hovered_target )
     const
         START_TIME = 3,
         TRAILER_DURATION = 30 - START_TIME
