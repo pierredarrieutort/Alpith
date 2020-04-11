@@ -1,16 +1,11 @@
 import 'bootstrap'
 import '../css/app.scss'
 
+document.addEventListener( 'DOMContentLoaded', () => {
+    home_player()
+} )
 
-document.addEventListener( 'DOMContentLoaded', scripts )
-
-
-function scripts() {
-    homePlayer()
-}
-
-
-function homePlayer() {
+function home_player() {
     const
         TAG = document.createElement( 'script' ),
         PLAYERS = Array.from( document.querySelectorAll( '#trends-carousel [data-video]' ) )
@@ -19,17 +14,14 @@ function homePlayer() {
     let firstScriptTag = document.getElementsByTagName( 'script' )[0];
     firstScriptTag.parentNode.insertBefore( TAG, firstScriptTag );
 
-
-    window.onYouTubePlayerAPIReady = () => PLAYERS.forEach( ( player, i ) => iframeInit( player, i ) )
+    window.onYouTubePlayerAPIReady = () => PLAYERS.forEach( ( player, i ) => iframe_init( player, i ) )
 }
 
-
-function iframeInit( player, i ) {
+function iframe_init( player, i ) {
     const FRAME_WRAPPER = document.createElement( 'div' )
 
     FRAME_WRAPPER.id = `home-player-embed${i}`
     player.parentNode.appendChild( FRAME_WRAPPER )
-
 
     new YT.Player( FRAME_WRAPPER.id, {
         height: '100vw',
@@ -46,15 +38,47 @@ function iframeInit( player, i ) {
             mute: 1
         },
         events: {
-            'onReady': onPlayerReady,
-            'onStateChange': stateListener
+            'onReady': player_behavior_init,
+            'onStateChange': state_listener
         }
     } )
 }
 
-function onPlayerReady( { target } ) {
+function state_listener( { data, target } ) {
+    if ( /3/.test( data ) )
+        buffering_behavior( target )
+
+    if ( /1/.test( data ) )
+        playing_behavior( target )
+
+    if ( /0|2|5/.test( data ) )
+        poster_to_trailer( target )
+}
+
+function buffering_behavior( target ) {
+    console.log( 'buffering:', target )
+}
+
+function playing_behavior( target ) {
+    console.log( 'playing:', target )
+}
+
+let targets_warehouse = []
+function player_behavior_init( { target } ) {
+    targets_warehouse = [target, ...targets_warehouse]
+
+    if ( targets_warehouse.length === this.querySelector( '.carousel-item' ).length )
+        document.getElementById( 'trends-carousel' ).onmouseenter = function () {
+            poster_to_trailer( this.querySelector( '.carousel-item.active>iframe' ).id )
+        }
+}
+
+//TODO - Get id index from targets_warehouse to acts on following function.
+
+function poster_to_trailer( target ) {
+    console.log( 'hovering:', target )
     target.playVideo()
-    trailer_limiter( target )
+    // trailer_limiter( target )
 }
 
 function trailer_limiter( target ) {
@@ -66,25 +90,4 @@ function trailer_limiter( target ) {
         target.seekTo( START_TIME )
 
     setTimeout( () => trailer_limiter( target ), 1000 )
-}
-
-
-function stateListener( { data, target } ) {
-    if ( /3/.test( data ) )
-        buffering_behavior( target )
-
-    if ( /1/.test( data ) )
-        playing_behavior( target )
-
-    if ( /0|2|5/.test( data ) )
-        onPlayerReady( target )
-}
-
-
-function buffering_behavior( target ) {
-
-}
-
-function playing_behavior( target ) {
-
 }
