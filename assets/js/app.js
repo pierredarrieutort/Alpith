@@ -28,13 +28,16 @@ function iframe_init( player, i ) {
         width: '100%',
         videoId: player.dataset.video,
         playerVars: {
+            disablekb: 1,
             modestbranding: 1,
             fs: 0,
             iv_load_policy: 3,
-            rel: 0,
             loop: 1,
             controls: 0,
-            mute: 1
+            mute: 1,
+            start: 3,
+            // end: 30,
+            cc_load_policy: 0
         },
         events: {
             'onReady': player_init_behavior,
