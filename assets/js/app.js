@@ -46,48 +46,58 @@ function iframe_init( player, i ) {
 
 function state_listener( { data, target } ) {
     if ( /3/.test( data ) )
-        buffering_behavior( target )
+        trailer_limiter( target, false )
 
     if ( /1/.test( data ) )
-        playing_behavior( target )
+        trailer_limiter( target )
 
-    if ( /0|2|5/.test( data ) )
+    if ( /0|5/.test( data ) )
         poster_to_trailer( target )
-}
-
-function buffering_behavior( target ) {
-    console.log( 'buffering:', target )
-}
-
-function playing_behavior( target ) {
-    console.log( 'playing:', target )
 }
 
 let targets_warehouse = []
 function player_behavior_init( { target } ) {
+    trailer_limiter( target, false )
     targets_warehouse = [target, ...targets_warehouse]
 
-    if ( targets_warehouse.length === this.querySelector( '.carousel-item' ).length )
+    if ( targets_warehouse.length === document.querySelectorAll( '#trends-carousel .carousel-item' ).length )
         document.getElementById( 'trends-carousel' ).onmouseenter = function () {
-            poster_to_trailer( this.querySelector( '.carousel-item.active>iframe' ).id )
+            poster_to_trailer( ...targets_warehouse.filter( ( { f } ) => f === this.querySelector( '.carousel-item.active>iframe' ) ) )
         }
 }
 
-//TODO - Get id index from targets_warehouse to acts on following function.
-
+let hovered_target = false
 function poster_to_trailer( target ) {
-    console.log( 'hovering:', target )
-    target.playVideo()
-    // trailer_limiter( target )
+    console.log( 'poster_to_trailer', target.f.id )
+    hovered_target = true
+    document.getElementById( 'trends-carousel' ).onmouseleave = () => trailer_to_poster( target )
+    if ( hovered_target ) {
+        target.playVideo()
+        target.f.style.opacity = 1
+    }
 }
 
-function trailer_limiter( target ) {
+function trailer_to_poster( target ) {
+    console.log( 'trailer_to_poster', target.f.id )
+    hovered_target = false
+    target.f.style.opacity = 0
+    setTimeout( () => trailer_limiter( target, false ), 1000 )
+}
+
+function trailer_limiter( target, recall = true ) {
+    console.log( 'trailer_limiter',  recall, hovered_target)
     const
         START_TIME = 3,
         TRAILER_DURATION = 30 - START_TIME
 
-    if ( target.getCurrentTime() < START_TIME || target.getCurrentTime() >= TRAILER_DURATION )
+    if ( target.getCurrentTime() < START_TIME || target.getCurrentTime() >= TRAILER_DURATION ) {
         target.seekTo( START_TIME )
-
-    setTimeout( () => trailer_limiter( target ), 1000 )
+        if ( !hovered_target ) {
+            recall = false
+            trailer_to_poster( target )
+        }
+    }
+    if ( recall && hovered_target)
+        setTimeout( () => trailer_limiter( target, recall ), 1000 )
+    else target.pauseVideo()
 }

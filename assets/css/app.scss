@@ -29,6 +29,10 @@
         }
     }
 
+    iframe {
+        transition: opacity 1.3s;
+    }
+
     .carousel-caption {
         margin-bottom: 5%;
 
