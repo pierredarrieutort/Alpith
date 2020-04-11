@@ -36,7 +36,6 @@ function iframe_init( player, i ) {
             controls: 0,
             mute: 1,
             start: 3,
-            // end: 30,
             cc_load_policy: 0
         },
         events: {
@@ -89,6 +88,7 @@ function trailer_to_poster( target, end_of_stream = false ) {
 
 function trailer_limiter( target, recall = true, force_seek ) {
     target.playVideo()
+
     const
         START_TIME = 3,
         TRAILER_DURATION = 30 - START_TIME
@@ -97,12 +97,13 @@ function trailer_limiter( target, recall = true, force_seek ) {
         target.seekTo( START_TIME )
     }
 
-    if ( recall ) {
-        if ( hovered_target ) {
-            setTimeout( () => trailer_limiter( target, recall ), 1000 )
-        } else {
-            recall = false
-            trailer_to_poster( target, true )
-        }
-    } else target.pauseVideo()
+    next_behavior( target, recall )
+}
+
+function next_behavior( target, recall ) {
+    recall
+        ? hovered_target
+            ? setTimeout( () => trailer_limiter( target, recall ), 1000 )
+            : recall = false && trailer_to_poster( target, true )
+        : target.pauseVideo()
 }
