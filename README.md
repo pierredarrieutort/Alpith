@@ -1,4 +1,4 @@
 # Alpith
 
 
-Alpith est une plateforme proposant la mise en ligne et le partage de films à la demande.
+Alpith is a platform offering online uploading and sharing of videos on demand.
