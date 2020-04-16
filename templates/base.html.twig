@@ -1,55 +1,57 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-US">
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
-			{% block title %}Symfony blog
-			{% endblock %}
+			Alpith -&nbsp;
+			{% block title %}{% endblock %}
 		</title>
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
+			{% for file in encore_entry_js_files('app') %}
+				<script defer src="{{ asset(file) }}"></script>
+			{% endfor %}
 		{% endblock %}
-
 	</head>
-
-	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand mr-5" href="/">Symfony blog</a>
+	<header>
+		<nav id="main-menu" class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand mr-5" href="/">Alpith.</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item mr-3">
-						<a class="nav-link" href="/news">News</a>
-					</li>
-					<li class="nav-item mr-3">
-						<a class="nav-link " href="/contact">Contact</a>
-					</li>
-					<li class="nav-item mr-3">
-						<a class="nav-link" href="/movies">Movies</a>
-					</li>
-					{% if app.user %}
+				<ul class="navbar-nav w-100 d-flex justify-content-between">
+					<div class="d-flex flex-wrap">
 						<li class="nav-item mr-3">
-							<a class="nav-link" href="/logout">Logout</a>
+							<a class="nav-link" href="#">Trending</a>
 						</li>
 						<li class="nav-item mr-3">
-							<a class="nav-link" href="/account">My account</a>
+							<a class="nav-link " href="/movies">Movies</a>
 						</li>
-					{% else %}
 						<li class="nav-item mr-3">
-							<a class="nav-link" href="/login">Login</a>
+							<a class="nav-link" href="#">Series</a>
 						</li>
-
-						<li class="nav-item mr-3">
-							<a class="nav-link" href="/register">Register</a>
-						</li>
-					{% endif %}
+					</div>
+					<div class="d-flex flex-wrap">
+						{% if app.user %}
+							<li class="nav-item mr-3">
+								<a class="nav-link" href="/logout">Logout</a>
+							</li>
+							<li class="nav-item mr-3">
+								<a class="nav-link" href="/account">My account</a>
+							</li>
+						{% else %}
+							<li class="nav-item mr-3">
+								<a class="nav-link" href="/login">Login</a>
+							</li>
+							<li class="nav-item mr-3">
+								<a class="nav-link" href="/register">Register</a>
+							</li>
+						{% endif %}
+					</div>
 				</ul>
 				{% if app.user %}
 					<div class="my-2 my-lg-0">
@@ -58,6 +60,8 @@
 				{% endif %}
 			</div>
 		</nav>
+	</header>
+	<body>
 		{% block body %}{% endblock %}
 	</body>
 </html>

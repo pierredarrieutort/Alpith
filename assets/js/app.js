@@ -1,3 +1,7 @@
+import 'bootstrap'
+
 import '../css/app.scss'
 
-console.log( 'test' )
+import home_player from './home_player'
+
+document.addEventListener( 'DOMContentLoaded', home_player)

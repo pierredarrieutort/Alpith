@@ -1,4 +1,45 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    background: blue;
+@import "~bootstrap/scss/bootstrap";
+
+#trends-carousel {
+    max-width: 1200px;
+    margin: auto;
+
+    img {
+        object-fit: cover;
+    }
+
+    .carousel-item::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(10deg, rgba(25, 25, 25, .8), transparent);
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .carousel-item {
+        padding-bottom: 41.8%;
+
+        >img,
+        >iframe {
+            position: absolute;
+            height: 100%;
+        }
+    }
+
+    iframe {
+        opacity: 0;
+        transition: opacity 1.3s;
+    }
+
+    .carousel-caption {
+        margin-bottom: 5%;
+
+        p {
+            width: 80%;
+            max-width: 600px;
+        }
+    }
 }
