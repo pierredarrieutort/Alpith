@@ -39,7 +39,7 @@ class Serie
     private $rating;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Season", mappedBy="serie", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Season", cascade={"persist", "remove"}, mappedBy="serie", orphanRemoval=true)
      */
     private $season;
 
@@ -130,5 +130,9 @@ class Serie
         }
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

@@ -1,4 +1,18 @@
 easy_admin:
     entities:
-        - App\Entity\Movie
 
+        Episode:
+            class: App\Entity\Episode
+
+        Season:
+            class: App\Entity\Season
+
+        Serie:
+            class: App\Entity\Serie
+            form:
+                fields:
+                    - Name
+                    - FirstReleased
+                    - Plot
+                    - Rating
+                    - { property: 'season', type: 'easyadmin_autocomplete', type_options: { attr: { create: true } } }
