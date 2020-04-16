@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="container">
+        <div class="row mb-5 mt-5">
+            <h1 class="mt-5 col-md-12">My account</h1>
+            <div class="mt-5 col-md-12"><strong>username : </strong>{{ user.username }}</div>
+            <a class="text-danger mt-5 col-md-12" href="/account/delete">delete account</a>
+        </div>
+    </section>
+{% endblock %}
