@@ -17,5 +17,7 @@ package-lock.json
 ###< symfony/webpack-encore-bundle ###
 
 .DS_Store
+.idea
+.env
 composer.lock
 symfony.lock
