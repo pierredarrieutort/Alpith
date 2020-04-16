@@ -43,3 +43,53 @@
         }
     }
 }
+
+// MOVIES
+
+.card-image{
+    width: 100%;
+    object-fit: cover;
+    max-height: 220px;
+    min-height: 220px;
+}
+
+.card{
+    border: 0;
+    box-shadow: 0 0 16px #33333340;
+    padding: 20px;
+}
+
+.card-tag{
+    padding: 3px 9px;
+    color: white;
+    background: darkblue;
+    border-radius: 7px;
+    font-size: 12px;
+    vertical-align: middle;
+    width: fit-content;
+}
+
+.card-date{
+    color: #999;
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+.card-text{
+    font-weight: 300;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: "pierre";
+    visibility: visible;
+}
+
+.card-title{
+    min-height: 52px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
