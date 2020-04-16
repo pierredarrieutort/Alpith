@@ -6,6 +6,7 @@
 /public/bundles/
 /var/
 /vendor/
+.env
 ###< symfony/framework-bundle ###
 
 ###> symfony/webpack-encore-bundle ###
@@ -18,6 +19,8 @@ package-lock.json
 .env
 .idea
 .DS_Store
+.idea
+.env
 composer.lock
 symfony.lock
 src/Migrations
