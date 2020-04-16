@@ -16,9 +16,11 @@ npm-debug.log
 yarn-error.log
 package-lock.json
 ###< symfony/webpack-encore-bundle ###
-
+.env
+.idea
 .DS_Store
 .idea
 .env
 composer.lock
 symfony.lock
+src/Migrations

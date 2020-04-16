@@ -51,6 +51,12 @@ class Episode
      */
     private $released;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Season", inversedBy="episodes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $season;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +142,18 @@ class Episode
     public function setReleased(?\DateTimeInterface $released): self
     {
         $this->released = $released;
+
+        return $this;
+    }
+
+    public function getSeason(): ?Season
+    {
+        return $this->season;
+    }
+
+    public function setSeason(?Season $season): self
+    {
+        $this->season = $season;
 
         return $this;
     }
