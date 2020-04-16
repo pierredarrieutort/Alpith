@@ -9,3 +9,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 .DS_Store
+.idea
+.env
+composer.lock
