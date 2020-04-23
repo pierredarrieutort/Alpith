@@ -4,10 +4,15 @@
     {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    {{ form_row(form.Name) }}
-    {{ form_row(form.FirstReleased) }}
-    {{ form_row(form.Plot) }}
-    {{ form_row(form.Rating) }}
+    {{ form_row(form.number) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.runtime) }}
+    {{ form_row(form.plot) }}
+    {{ form_row(form.imdbid) }}
+    {{ form_row(form.rating) }}
+    {{ form_row(form.released) }}
+    {{ form_row(form.season) }}
+    {{ form_row(form.videoUrl) }}
     {{ form_row(form._token) }}
 
     <section class="container">

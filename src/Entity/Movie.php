@@ -61,6 +61,11 @@ class Movie
      */
     private $imdbID;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $videoUrl;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -170,6 +175,18 @@ class Movie
     public function setImdbID(?string $imdbID): self
     {
         $this->imdbID = $imdbID;
+
+        return $this;
+    }
+
+    public function getVideoUrl(): ?string
+    {
+        return $this->videoUrl;
+    }
+
+    public function setVideoUrl(?string $videoUrl): self
+    {
+        $this->videoUrl = $videoUrl;
 
         return $this;
     }

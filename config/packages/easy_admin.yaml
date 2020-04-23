@@ -3,6 +3,10 @@ easy_admin:
 
         Episode:
             class: App\Entity\Episode
+            templates:
+                edit: 'admin/videoSerie/edit.html.twig'
+                new: 'admin/videoSerie/new.html.twig'
+
 
         Season:
             class: App\Entity\Season
@@ -15,9 +19,6 @@ easy_admin:
                     - FirstReleased
                     - Plot
                     - Rating
-            templates:
-                edit: 'admin/videoSerie/edit.html.twig'
-                new: 'admin/videoSerie/new.html.twig'
 
 
         Movie :
