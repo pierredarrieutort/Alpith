@@ -9,9 +9,9 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        user:
             entity:
-                class: App\Entity\Admin
+                class: App\Entity\User
                 property: username
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
@@ -20,10 +20,11 @@ security:
             security: false
         main:
             anonymous: lazy
-            provider: app_user_provider
+            provider: user
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
+                entry_point: App\Security\LoginFormAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
@@ -38,5 +39,4 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
