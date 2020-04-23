@@ -15,8 +15,14 @@ easy_admin:
                     - FirstReleased
                     - Plot
                     - Rating
-                    - { property: 'season', type: 'easyadmin_autocomplete', type_options: { attr: { create: true } } }
+            templates:
+                edit: 'admin/videoSerie/edit.html.twig'
+                new: 'admin/videoSerie/new.html.twig'
+
 
         Movie :
             class : App\Entity\Movie
+            templates:
+                edit: 'admin/videoMovie/edit.html.twig'
+                new: 'admin/videoMovie/new.html.twig'
 
