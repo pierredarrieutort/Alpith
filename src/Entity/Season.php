@@ -30,7 +30,7 @@ class Season
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Serie", inversedBy="season")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $serie;
 
@@ -114,5 +114,9 @@ class Season
         }
 
         return $this;
+    }
+    public function __toString()
+    {
+       return $this->getName();
     }
 }
