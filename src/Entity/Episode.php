@@ -57,6 +57,11 @@ class Episode
      */
     private $season;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $videoUrl;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +159,18 @@ class Episode
     public function setSeason(?Season $season): self
     {
         $this->season = $season;
+
+        return $this;
+    }
+
+    public function getVideoUrl(): ?string
+    {
+        return $this->videoUrl;
+    }
+
+    public function setVideoUrl(?string $videoUrl): self
+    {
+        $this->videoUrl = $videoUrl;
 
         return $this;
     }

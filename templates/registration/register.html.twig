@@ -21,6 +21,10 @@
                 {{ form_widget(registrationForm.username, { 'attr': {'class': 'form-control','autocomplete': 'nope'} }) }}
             </div>
             <div class="col-12 mt-2">
+                {{ form_label(registrationForm.mail, 'Email') }}
+                {{ form_widget(registrationForm.mail, { 'attr': {'class': 'form-control','autocomplete': 'nope'} }) }}
+            </div>
+            <div class="col-12 mt-2">
                 {{ form_label(registrationForm.plainPassword, 'Password') }}
                 {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'form-control','autocomplete': 'nope'} }) }}
             </div>

@@ -43,6 +43,7 @@
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			</a>
+
 		</div>
 	</section>
 	<section class="container">
@@ -54,18 +55,23 @@
 						<div class="form_controls">
 							<div class="upload_button_holder">
 								<input type="file" id="fileElem" multiple accept="image/*, video/*" hidden>
+
 							</div>
 						</div>
+					</form>
+					<div class="progress-bar" id="progress-bar">
+						<div class="progress" id="progress"></div>
 					</div>
+
 				</form>
 				<button id="fileSelect">Select some files</button>
 
 				<div class="progress-bar" id="progress-bar">
 					<div class="progress" id="progress"></div>
-				</div>
-				<div id="gallery"/>
-			</div>
-		</div>
-	</div>
 
-</section></main>{% endblock %}
+				</div>
+			</div>
+
+
+		</section>
+	</main>{% endblock %}
