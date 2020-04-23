@@ -9,10 +9,6 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
-            entity:
-                class: App\Entity\Admin
-                property: username
         user:
             entity:
                 class: App\Entity\User
@@ -24,12 +20,11 @@ security:
             security: false
         main:
             anonymous: lazy
-            provider: app_user_provider
+            provider: user
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
-                    - App\Security\LoginAdminFormAuthenticator
-                entry_point: App\Security\LoginAdminFormAuthenticator
+                entry_point: App\Security\LoginFormAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
