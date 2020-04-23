@@ -25,7 +25,7 @@ FILE_SELECT.addEventListener( "click", function ( e ) {
 
 URL_SELECT.addEventListener( "click", function ( e ) {
     e.preventDefault();
-    
+
     //TODO create a real link selector
     uploadFile( 'https://res.cloudinary.com/demo/image/upload/sample.jpg' )
 } );
@@ -37,7 +37,7 @@ function drag( e ) {
     e.preventDefault();
 }
 
-dropbox = document.getElementById( "dropbox" );
+let dropbox = document.getElementById( "dropbox" );
 dropbox.addEventListener( "dragenter", drag );
 dropbox.addEventListener( "dragover", drag );
 dropbox.addEventListener( "drop", drop );
