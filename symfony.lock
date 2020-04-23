@@ -21,7 +21,7 @@
         "version": "1.2.1"
     },
     "php": {
-        "version": "7.3"
+        "version": "7.4"
     },
     "psr/http-message": {
         "version": "1.0.1"
