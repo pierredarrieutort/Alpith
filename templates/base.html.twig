@@ -51,6 +51,11 @@
 								<a class="nav-link" href="/register">Register</a>
 							</li>
 						{% endif %}
+						{% if is_granted('ROLE_ADMIN') %}
+							<div class="my-2 my-lg-0">
+								<a href="/admin" class="btn btn-outline-success my-2 my-sm-0" type="submit">Admin</a>
+							</div>
+						{% endif %}
 					</div>
 				</ul>
 			</div>
