@@ -1,5 +1,13 @@
+# config/packages/easy_admin.yaml
 easy_admin:
     entities:
+
+        User:
+            class: App\Entity\User
+            form:
+                fields:
+                    - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+
 
         Episode:
             class: App\Entity\Episode
@@ -19,4 +27,3 @@ easy_admin:
 
         Movie :
             class : App\Entity\Movie
-
