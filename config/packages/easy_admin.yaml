@@ -11,6 +11,10 @@ easy_admin:
 
         Episode:
             class: App\Entity\Episode
+            templates:
+                edit: 'admin/videoSerie/edit.html.twig'
+                new: 'admin/videoSerie/new.html.twig'
+
 
         Season:
             class: App\Entity\Season
@@ -23,7 +27,11 @@ easy_admin:
                     - FirstReleased
                     - Plot
                     - Rating
-                    - { property: 'season', type: 'easyadmin_autocomplete', type_options: { attr: { create: true } } }
+
 
         Movie :
             class : App\Entity\Movie
+            templates:
+                edit: 'admin/videoMovie/edit.html.twig'
+                new: 'admin/videoMovie/new.html.twig'
+
