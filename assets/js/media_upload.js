@@ -1,6 +1,8 @@
 import Axios from "axios"
 
 export default function mediaUpload() {
+    inject_style()
+
     const FILE_ELEM = document.getElementById('fileElem')
 
     document.getElementById('fileSelect').onclick = () => FILE_ELEM.click()
@@ -12,7 +14,7 @@ export default function mediaUpload() {
 }
 
 function drag_and_drop() {
-    const DROPBOX = document.getElementById("dropbox")
+    const DROPBOX = document.getElementById("admin-media-upload")
     DROPBOX.ondragenter = drag
     DROPBOX.ondragover = drag
     DROPBOX.ondrop = drop
@@ -67,4 +69,13 @@ function fileUpload(file) {
 
         document.getElementById('gallery').appendChild(video)
     }
+}
+
+
+function inject_style() {
+    const style = document.createElement('style')
+
+    style.innerHTML = '#admin-media-upload {border:9px dashed;background:#e0e0e0;text-align:center;display:grid;gap:20px;padding: 2% 10%;}#admin-media-upload .progress{margin:0 auto;color:#f6f6f6;background:none;}#admin-media-upload video{width: 100%;}'
+
+    document.getElementById('admin-media-upload').appendChild(style)
 }

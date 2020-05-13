@@ -1,21 +1,9 @@
 <section class="container" id="admin-media-upload">
-	<div class="col-md-12 mt-5">
-		<div id="dropbox">
-			<form class="my-form">
-				<div class="form_line">
-					<p>Upload multiple files by clicking the link below or by dragging and dropping images onto the dashed region</p>
-					<div class="form_controls">
-						<div class="upload_button_holder">
-							<input type="file" id="fileElem" multiple accept="image/*, video/*" hidden>
-						</div>
-					</div>
-				</form>
-				<div class="progress-bar" id="progress-bar">
-					<div class="progress" id="progress"></div>
-				</div>
-			</form>
-			<button id="fileSelect">Select some files</button>
-			<div id="gallery"></div>
-		</div>
+	<p>Upload multiple files by clicking the link below or by dragging and dropping images onto the dashed region</p>
+	<input type="file" id="fileElem" multiple accept="image/*, video/*" hidden>
+	<div class="progress-bar" id="progress-bar">
+		<div class="progress" id="progress"></div>
 	</div>
+	<button id="fileSelect">Select some files</button>
+	<div id="gallery"></div>
 </section>
