@@ -53,14 +53,16 @@ function fileUpload( file ) {
     } )
         .then( ( { data } ) => display_uploaded_file( data ) )
 
-    function display_uploaded_file( res ) {
+    function display_uploaded_file( {secure_url, public_id} ) {
         let
-            tokens = res.secure_url.split( '/' ),
-            img = new Image()
+            tokens = secure_url.split( '/' ),
+            video = document.createElement('video');
 
         tokens.splice( -2, 0, 'w_150,c_scale' )
-        img.src = tokens.join( '/' )
-        img.alt = res.public_id
-        document.getElementById( 'gallery' ).appendChild( img )
+        video.src = tokens.join( '/' )
+        video.alt = public_id
+        video.autoplay = true
+        video.mute = true
+        document.getElementById( 'gallery' ).appendChild( video )
     }
 }
