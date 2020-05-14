@@ -2,6 +2,9 @@
     "alterphp/easyadmin-extension-bundle": {
         "version": "v3.0.1"
     },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.0.3"
+    },
     "league/uri-components": {
         "version": "1.8.2"
     },
@@ -304,6 +307,9 @@
     },
     "twig/twig": {
         "version": "v3.0.3"
+    },
+    "webimpress/safe-writer": {
+        "version": "2.0.1"
     },
     "zendframework/zend-code": {
         "version": "3.4.1"
