@@ -34,4 +34,16 @@ easy_admin:
             templates:
                 edit: 'admin/videoMovie/edit.html.twig'
                 new: 'admin/videoMovie/new.html.twig'
+            form:
+                fields:
+                    - { property: 'released', type: 'App\Form\DatePickerType'}
+                    - { property: 'title'}
+                    - { property: 'description'}
+                    - { property: 'rating'}
+                    - { property: 'thumbnail'}
+                    - { property: 'runtime'}
+                    - { property: 'director'}
+                    - { property: 'actors'}
+                    - { property: 'imdbID'}
+                    - { property: 'videoUrl'}
 
