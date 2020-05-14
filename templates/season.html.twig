@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="container">
+    <div class="row mb-1 mt-5">
+        <div class="col-md-12">
+            <h2 class="mb-4">{{ season.name }}</h2>
+            <h4 class="mt-5">Episodes</h4>
+            <ul>
+                {% for episode in episodes %}
+                    {% if(episode.season.id == season.id) %}
+                        <a href="{{ app.request.uri }}/episode-{{ episode.id }}"><li>{{ episode.name }}</li></a>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

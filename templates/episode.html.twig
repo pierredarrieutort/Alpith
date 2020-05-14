@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="container">
+    <div class="row mb-1 mt-5">
+        <div class="col-md-12">
+            <h2 class="mb-4">{{ episode.name }}</h2>
+            <p>{{ episode.plot }}</p>
+            <div>rating : {{ episode.rating }}</div>
+            <div>imdbID : {{ episode.imdbid }}</div>
+            <div>released : {{ episode.released|date("m/d/Y") }}</div>
+            <h3 class="mt-5">{{ episode.name }} trailer</h3>
+            <video controls preload="auto" width="auto">
+                <source src="{{ episode.videoUrl }}" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
