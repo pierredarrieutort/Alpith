@@ -45,8 +45,6 @@ class MovieController extends AbstractController
     {
         $movie = $this->repository->find($id);
 
-        //($movie);die;
-
         return $this->render('media-player.html.twig', [
             'movie' => $movie
         ]);
