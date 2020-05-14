@@ -63,7 +63,7 @@ function fileUpload(file) {
         video.mute = true
         video.loop = true
 
-        const URL_CONTAINER = document.getElementById('movie_videoUrl')
+        const URL_CONTAINER = document.getElementById('movie_videoUrl') || document.getElementById('episode_videoUrl')
 
         URL_CONTAINER.innerHTML = secure_url
         URL_CONTAINER.setAttribute('readonly', true)
