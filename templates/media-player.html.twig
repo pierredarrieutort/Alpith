@@ -15,7 +15,7 @@
             <div>imdbID : {{ movie.imdbID }}</div>
             <div>released : {{ movie.released|date("m/d/Y") }}</div>
             <h3 class="mt-5">{{ movie.title }} trailer</h3>
-            <video controls preload="auto" width="99%">
+            <video controls preload="auto" width="100%">
                 <source src="{{ movie.videoUrl }}" type="video/mp4">
             </video>
         </div>
