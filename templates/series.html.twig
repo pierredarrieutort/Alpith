@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="container">
+    <h1 class="mt-5">Series page</h1>
+    <div class="row mb-5 mt-5">
+        {% for serie in series|reverse %}
+        <movie class="col-md-4 mt-4">
+            <div class="card">
+                <h3 class="card-title mb-2">{{ serie.Name }}</h3>
+                <p class="card-text">{{ serie.plot }}</p>
+                <div class="card-text">rating : {{ serie.rating }}</div>
+                <a href="series/serie-{{ serie.id }}" class="card-link">read more</a>
+            </div>
+        </movie>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
