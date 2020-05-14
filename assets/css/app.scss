@@ -46,20 +46,20 @@
 
 // MOVIES
 
-.card-image{
+.card-image {
     width: 100%;
     object-fit: cover;
     max-height: 220px;
     min-height: 220px;
 }
 
-.card{
+.card {
     border: 0;
     box-shadow: 0 0 16px #33333340;
     padding: 20px;
 }
 
-.card-tag{
+.card-tag {
     padding: 3px 9px;
     color: white;
     background: darkblue;
@@ -69,13 +69,13 @@
     width: fit-content;
 }
 
-.card-date{
+.card-date {
     color: #999;
     font-size: 0.8rem;
     font-weight: 300;
 }
 
-.card-text{
+.card-text {
     font-weight: 300;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -85,7 +85,7 @@
     visibility: visible;
 }
 
-.card-title{
+.card-title {
     min-height: 52px;
     overflow: hidden;
     text-overflow: ellipsis;

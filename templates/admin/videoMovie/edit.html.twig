@@ -2,50 +2,27 @@
 {% extends '@EasyAdmin/default/edit.html.twig' %}
 
 {% block entity_form %}
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
+	{{ form_start(form) }}
+	{{ form_errors(form) }}
 
-    {{ form_row(form.title) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.released) }}
-    {{ form_row(form.rating) }}
-    {{ form_row(form.thumbnail) }}
-    {{ form_row(form.runtime) }}
-    {{ form_row(form.director) }}
-    {{ form_row(form.actors) }}
-    {{ form_row(form.imdbID) }}
-    {{ form_row(form.videoUrl) }}
-    {{ form_row(form._token) }}
+	{{ form_row(form.title) }}
+	{{ form_row(form.description) }}
+	{{ form_row(form.released) }}
+	{{ form_row(form.rating) }}
+	{{ form_row(form.thumbnail) }}
+	{{ form_row(form.runtime) }}
+	{{ form_row(form.director) }}
+	{{ form_row(form.actors) }}
+	{{ form_row(form.imdbID) }}
+	{{ form_row(form.videoUrl) }}
+	{{ form_row(form._token) }}
 
-    <section class="container">
-        <div class="col-md-12 mt-5">
-            <div id="dropbox">
-                <h1>Client-Side Upload to Cloudinary with JavaScript</h1>
-                Learn more in this blog post -
-                <a href="https://cloudinary.com/blog/direct_upload_made_easy_from_browser_or_mobile_app_to_the_cloud">Direct upload made easy from browser or mobile app to the cloud</a>
+	{% for file in encore_entry_js_files('app') %}
+		<script defer src="{{ asset(file) }}"></script>
+	{% endfor %}
 
-                <form class="my-form">
-                    <div class="form_line">
-                        <h4>Upload multiple files by clicking the link below or by dragging and dropping images onto the dashed region</h4>
-                        <div class="form_controls">
-                            <div class="upload_button_holder">
-                                <input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
-                                <a href="#" id="fileSelect">Select some files</a>&nbsp;&nbsp;
-                                <a href="#" id="urlSelect">URL Upload</a>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <div class="progress-bar" id="progress-bar">
-                    <div class="progress" id="progress"></div>
-                </div>
-                <div id="gallery"/>
-            </div>
-        </div>
-    </section>
-    {% for file in encore_entry_js_files('app') %}
-        <script defer src="{{ asset(file) }}"></script>
-    {% endfor %}
+	{{ include('admin/videoMovie/upload_frame.html.twig')}}
 
-    {{ form_end(form) }}
+	{{ form_end(form) }}
+
 {% endblock %}
