@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="container">
+    <div class="row mb-1 mt-5">
+        <div class="col-md-12">
+            <h2 class="mb-4">{{ serie.Name }}</h2>
+            <p>{{ serie.plot }}</p>
+            <div>rating : {{ serie.rating }}</div>
+            <h4 class="mt-5">Seasons</h4>
+            <ul>
+                {% for season in seasons %}
+                    <a href="{{ app.request.uri }}/season-{{ season.id }}"><li>{{ season.name }}</li></a>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

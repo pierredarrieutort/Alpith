@@ -14,9 +14,14 @@
             <div>actors : {{ movie.actors }}</div>
             <div>imdbID : {{ movie.imdbID }}</div>
             <div>released : {{ movie.released|date("m/d/Y") }}</div>
+            <h3 class="mt-5">{{ movie.title }} trailer</h3>
+            <video controls preload="auto" width="auto">
+                <source src="{{ movie.videoUrl }}" type="video/mp4">
+            </video>
         </div>
     </div>
 </section>
+
 {% endblock %}
 
 {% block javascripts %}

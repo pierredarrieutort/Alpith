@@ -61,8 +61,9 @@ function fileUpload(file) {
         video.alt = public_id
         video.autoplay = true
         video.mute = true
+        video.loop = true
 
-        const URL_CONTAINER = document.getElementById('movie_videoUrl')
+        const URL_CONTAINER = document.getElementById('movie_videoUrl') || document.getElementById('episode_videoUrl')
 
         URL_CONTAINER.innerHTML = secure_url
         URL_CONTAINER.setAttribute('readonly', true)
@@ -75,7 +76,7 @@ function fileUpload(file) {
 function inject_style() {
     const style = document.createElement('style')
 
-    style.innerHTML = '#admin-media-upload {border:9px dashed;background:#e0e0e0;text-align:center;display:grid;gap:20px;padding: 2% 10%;}#admin-media-upload .progress{margin:0 auto;color:#f6f6f6;background:none;}#admin-media-upload video{width: 100%;}'
+    style.innerHTML = '#admin-media-upload {border:9px dashed;background:#e0e0e0;text-align:center;display:grid;gap:20px;padding: 2% 10%;}#admin-media-upload .progress{margin:0 auto;color:#f6f6f6;background:none;}#admin-media-upload video{width: 100%;} #admin-media-upload #fileSelect{cursor:pointer;padding:20px;border:5px solid #121212;background:#666;color: #fff}'
 
     document.getElementById('admin-media-upload').appendChild(style)
 }
