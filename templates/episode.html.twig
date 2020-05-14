@@ -10,7 +10,7 @@
             <div>imdbID : {{ episode.imdbid }}</div>
             <div>released : {{ episode.released|date("m/d/Y") }}</div>
             <h3 class="mt-5">{{ episode.name }} trailer</h3>
-            <video controls preload="auto" width="100%">
+            <video controls preload="auto" width="99%">
                 <source src="{{ episode.videoUrl }}" type="video/mp4">
             </video>
         </div>
