@@ -10,7 +10,9 @@
             <h4 class="mt-5">Seasons</h4>
             <ul>
                 {% for season in seasons %}
-                    <a href="{{ app.request.uri }}/season-{{ season.id }}"><li>{{ season.name }}</li></a>
+                    {% if(season.serie.id == serie.id) %}
+                        <a href="{{ app.request.uri }}/season-{{ season.id }}"><li>{{ season.name }}</li></a>
+                    {% endif %}
                 {% endfor %}
             </ul>
 

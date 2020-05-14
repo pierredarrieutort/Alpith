@@ -47,11 +47,11 @@ class SerieController extends AbstractController
      */
     public function show($serieid): Response
     {
+        $serie = $this->repository->find($serieid);
+
         $seasons = $this->getDoctrine()
             ->getRepository(Season::class)
-            ->findAll($serieid);
-
-        $serie = $this->repository->find($serieid);
+            ->findAll();
 
         return $this->render('serie.html.twig', [
             'serie' => $serie,
@@ -74,10 +74,6 @@ class SerieController extends AbstractController
             ->getRepository(Episode::class)
             ->findAll();
 
-
-        //dump($episodes);
-        //dump($season);die;
-
         return $this->render('season.html.twig', [
             'episodes' => $episodes,
             'season' => $season
@@ -94,9 +90,6 @@ class SerieController extends AbstractController
         $episode = $this->getDoctrine()
             ->getRepository(Episode::class)
             ->find($episodeid);
-
-
-        //dump($episode);die;
 
         return $this->render('episode.html.twig', [
             'episode' => $episode
