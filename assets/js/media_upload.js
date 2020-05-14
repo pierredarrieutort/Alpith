@@ -61,6 +61,7 @@ function fileUpload(file) {
         video.alt = public_id
         video.autoplay = true
         video.mute = true
+        video.loop = true
 
         const URL_CONTAINER = document.getElementById('movie_videoUrl')
 
